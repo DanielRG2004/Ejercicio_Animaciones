@@ -1,0 +1,130 @@
+.Seccion2 {
+  min-height: 0;
+  padding: 0;
+}
+
+/* Parte oscura con las imágenes y el texto */
+.Seccion2 .hero {
+  min-height: 670px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 40px 7%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background: #100e19;
+  color: white;
+}
+
+.Seccion2 .imagenes {
+  position: relative;
+  width: 50%;
+  height: 600px;
+  flex: 0 1 50%;
+}
+
+.Seccion2 .imagenes img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 50% 50% 0 0;
+}
+
+/* Robot atrás */
+.Seccion2 .imagenes img:first-child {
+  z-index: 1;
+  width: 58%;
+  height: 88%;
+  left: 8%;
+  top: 4%;
+}
+
+/* Estatua delante */
+.Seccion2 .imagenes img:last-child {
+  z-index: 2;
+  width: 58%;
+  height: 68%;
+  left: 36%;
+  top: 22%;
+}
+
+.Seccion2 .texto {
+  width: 50%;
+}
+
+.Seccion2 .texto h1 {
+  margin: 0 0 30px;
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1.1;
+}
+
+.Seccion2 .texto p {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* Parte amarilla con los cuatro pasos */
+.Seccion2 .pasos {
+  min-height: 500px;
+  padding: 100px 7%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 35px;
+  align-content: start;
+  background: #ffca05;
+  color: black;
+}
+
+.Seccion2 .pasos h2 {
+  grid-column: 1 / -1;
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: clamp(36px, 4vw, 48px);
+}
+
+.Seccion2 .paso h3 {
+  margin: 0 0 18px;
+  font-size: 25px;
+}
+
+.Seccion2 .paso p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 900px) {
+  .Seccion2 .hero {
+    min-height: auto;
+    flex-direction: column;
+    padding: 50px 7%;
+  }
+
+  .Seccion2 .imagenes {
+    width: 100%;
+    max-width: 600px;
+    height: 520px;
+    flex-basis: auto;
+  }
+
+  .Seccion2 .texto {
+    width: 100%;
+  }
+
+  .Seccion2 .pasos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .Seccion2 .imagenes {
+    height: 420px;
+  }
+
+  .Seccion2 .pasos {
+    grid-template-columns: 1fr;
+  }
+}
