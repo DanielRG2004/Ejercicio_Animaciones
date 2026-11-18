@@ -1,0 +1,99 @@
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  background: #08080f;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100vh;
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 40px clamp(10px, 3vw, 20px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero__texto { max-width: 580px; }
+
+.hero__texto > * {
+  opacity: 0;
+  animation: subir .9s ease-out forwards;
+}
+.hero__texto > :nth-child(1) { animation-delay: .1s; }
+.hero__texto > :nth-child(2) { animation-delay: .35s; }
+.hero__texto > :nth-child(3) { animation-delay: .6s; }
+.hero__texto > :nth-child(4) { animation-delay: .85s; }
+
+.hero__titulo {
+  margin-bottom: 40px;
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: 1;
+}
+
+.hero__parrafo {
+  margin-bottom: 34px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 165px;
+  height: 55px;
+  margin-top: 6px;
+  background: #ffcc00;
+  color: #111;
+  text-decoration: none;
+  border-radius: 28px 28px 0 28px;
+  transition: transform .3s, box-shadow .3s, border-radius .3s;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  border-radius: 28px 28px 28px 0;
+  box-shadow: 0 10px 25px rgba(255, 204, 0, .35);
+}
+
+.hero__imagen {
+  position: relative;
+  width: clamp(280px, 30vw, 350px);
+  aspect-ratio: 350 / 480;
+  animation: flotar 3.5s ease-in-out infinite;
+}
+
+.hero__imagen::before {
+  content: "";
+  position: absolute;
+  inset: 20px 10px 0;
+  background: radial-gradient(circle, rgba(255, 60, 30, .55), transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  animation: pulso 3s ease-in-out infinite;
+}
+
+.hero__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes flotar {
+  50% { transform: translateY(-25px); }
+}
+
+@keyframes pulso {
+  50% { opacity: 1; transform: scale(1.1); }
+}

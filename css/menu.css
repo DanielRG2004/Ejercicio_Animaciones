@@ -1,0 +1,135 @@
+/* ---------- Menú ---------- */
+html { scroll-behavior: smooth; }
+
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 8, 15, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  animation: bajar .8s ease-out both;
+}
+
+.menu__contenedor {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu__logo {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.menu__logo span { color: #ffcc00; }
+
+.menu__lista {
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__enlace {
+  position: relative;
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color .3s;
+}
+
+/* línea amarilla que crece al pasar el mouse */
+.menu__enlace::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #ffcc00;
+  transition: width .3s ease;
+}
+.menu__enlace:hover { color: #ffcc00; }
+.menu__enlace:hover::after { width: 100%; }
+
+.menu__boton {
+  padding: 10px 24px;
+  background: #ffcc00;
+  color: #111;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 20px 20px 0 20px;
+  transition: transform .3s, box-shadow .3s;
+}
+.menu__boton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 204, 0, .35);
+}
+
+/* Botón hamburguesa (solo móvil) */
+.menu__check { display: none; }
+.menu__hamburguesa {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu__hamburguesa span {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+
+@keyframes bajar {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .menu__hamburguesa { display: flex; }
+  .menu__boton { display: none; }
+
+  .menu__lista {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #08080f;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+  }
+  .menu__lista li { padding: 14px 20px; border-top: 1px solid rgba(255, 255, 255, .08); }
+
+  .menu__check:checked ~ .menu__lista { max-height: 300px; }
+  .menu__check:checked ~ .menu__hamburguesa span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu__check:checked ~ .menu__hamburguesa span:nth-child(2) { opacity: 0; }
+  .menu__check:checked ~ .menu__hamburguesa span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+
+/* Para que el menú no tape el título al navegar con los enlaces */
+section { scroll-margin-top: 70px; }
+
+/* TEMPORAL: da altura a las secciones vacías para probar el menú.
+   Se puede borrar cuando los compañeros agreguen su contenido. */
+.Seccion1, .Seccion2 { min-height: 100vh; }
+.prueba {
+  margin: 0;
+  padding: 60px 20px;
+  text-align: center;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
